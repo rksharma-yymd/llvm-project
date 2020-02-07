@@ -4498,6 +4498,9 @@ bool Parser::CXXAMPFindRestrictionSeq(CachedTokens &Toks,
       break;
     case tok::semi:
         return false;
+    case tok::identifier:
+        if (Tok.getIdentifierInfo() -> getName() == "override")
+            return false;
       // FALL THROUGH.
     default:
       // consume this token.
